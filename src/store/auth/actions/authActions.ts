@@ -37,7 +37,7 @@ export const singOutUser = () => async (dispatch: Dispatch<userSignOutAction>) =
 
 export const checkAuth = () => async (dispatch: Dispatch<userSignInAction>) => {
     try {
-        const res = await axios.get('http://localhost:8080/auth/refresh', {withCredentials: true});
+        const res = await axios.get('https://pure-woodland-99054.herokuapp.com/auth/refresh', {withCredentials: true});
         localStorage.setItem('token', res.data.accessToken);
         dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: res.data});
     } catch(e) {
