@@ -2,7 +2,7 @@ import axios from 'axios';
 import { SignInData, SignUpData } from './../auth/types/types';
 import { newLessonData, updateLessonData, Filter } from './../lessons/types/types';
 
-const API = axios.create({ withCredentials: true, baseURL: 'http://localhost:8080'});
+const API = axios.create({ withCredentials: true, baseURL: 'http://localhost:8080/'});
 
 API.interceptors.request.use(config => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
