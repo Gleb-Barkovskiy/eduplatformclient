@@ -1,0 +1,23 @@
+.form {
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .input {
+        width: 70%;
+        height: 20px;
+        padding: 10px 15px;
+        font-size: medium;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+    }
+    .button {
+        margin-left: -35px;
+        border: none;
+        height: 30px;
+        width: 20px;
+        background: none;
+        cursor: pointer;
+    }
+}

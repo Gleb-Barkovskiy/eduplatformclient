@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .form {
+        margin-left: calc(50% - 450px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        height: 600px;
+        .input {
+            outline: none;
+            width: 350px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            padding: 20px;
+            margin: 20px;
+            font-size: 16px;
+        }
+        .button {
+            width: 200px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: antiquewhite;
+            &:hover {
+                background-color: lightgray;
+                transition: 0.3s;
+            }
+        }
+        .link {
+            opacity: 0.7;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

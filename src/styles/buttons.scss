@@ -1,0 +1,7 @@
+button {
+    border: none;
+    &:hover {
+        background-color: lightgray;
+        transition: 0.3s;
+    }
+}

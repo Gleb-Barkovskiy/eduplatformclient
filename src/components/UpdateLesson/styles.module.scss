@@ -1,0 +1,31 @@
+.form {
+    display: flex;
+    background-color: white;
+    opacity: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 700px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px lightgray;
+    .input {
+        outline: none;
+        width: 350px;
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 20px;
+        margin: 20px;
+        font-size: 16px;
+    }
+    .button {
+        width: 200px;
+        height: 50px;
+        border-radius: 20px;
+        background-color: antiquewhite;
+        &:hover {
+            background-color: lightgray;
+            transition: 0.3s;
+        }
+    }
+}

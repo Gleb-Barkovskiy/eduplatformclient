@@ -1,0 +1,25 @@
+.navlinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .navlink {
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        background: white;
+        border-radius: 120px;
+        width: 150px;
+        outline: none;
+        border: none;
+        &:hover {
+            background-color: lightgray;
+            transition: 0.3s;
+        }
+        .text {
+            padding-left: 10px;
+        }
+    }
+}
