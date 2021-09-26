@@ -2,7 +2,7 @@ import axios from 'axios';
 import { SignInData, SignUpData } from './../auth/types/types';
 import { newLessonData, updateLessonData, Filter } from './../lessons/types/types';
 
-const API = axios.create({ withCredentials: true, baseURL: 'https://pure-woodland-99054.herokuapp.com/'});
+const API = axios.create({ withCredentials: true,baseURL: 'https://pure-woodland-99054.herokuapp.com/' });
 
 API.interceptors.request.use(config => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
@@ -15,8 +15,10 @@ API.interceptors.response.use(config => {
     const originalReq = error.config;
     if(error.response.status === 401 && error.config && !error.config._isRetry){
         try {
-            const res = await axios.get('https://pure-woodland-99054.herokuapp.com/auth/refresh', {withCredentials: true});
+            const token = localStorage.getItem('refreshToken');
+            const res = await axios.get(`https://pure-woodland-99054.herokuapp.com/auth/refresh/${token}`, { withCredentials: true});
             localStorage.setItem('token', res.data.accessToken);
+            localStorage.setItem('refreshToken', res.data.refreshToken);
             return API.request(originalReq);
         } catch (e) {
             return 'Пользователь не авторизован';
