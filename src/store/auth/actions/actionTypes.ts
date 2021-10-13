@@ -1,4 +1,5 @@
 export enum actionTypes {
+    LOADING_AUTH = 'LOADING_AUTH',
     LOGIN = 'LOGIN',
     LOGIN_SUCCESS = 'LOGIN_SUCCES',
     LOGIN_ERROR = 'LOGIN_ERROR',

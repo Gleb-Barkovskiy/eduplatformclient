@@ -46,7 +46,7 @@ export const Login:React.FC<{setPage: Function, registration: string}> = ({setPa
                 onChange={handleChange}
                 name={loginInputNames.password}
             />
-            <button className={styles.button} type="submit"> 
+            <button className={styles.submitButton} type="submit"> 
                 Войти
             </button>
             <p

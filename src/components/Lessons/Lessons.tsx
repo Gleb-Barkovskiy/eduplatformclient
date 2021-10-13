@@ -1,11 +1,10 @@
-import WarningIcon from '@material-ui/icons/Warning';
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { getLessons } from "../../../store/lessons/actions/lessonsActions";
-import { FetchingError } from "../../Errors/FetchingError/FetchingError";
-import { Loader } from "../../Loading/Loader";
-import { LessonItem } from "../LessonsItem/LessonItem";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { getLessons } from "../../store/lessons/actions/lessonsActions";
+import { Error } from "../Errors/Error";
+import { Loader } from "../Loading/Loader";
+import { LessonItem } from "../LessonsItem/LessonsItem";
 import styles from './styles.module.scss';
 
 export const Lessons: React.FC = () => {
@@ -21,22 +20,21 @@ export const Lessons: React.FC = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div className="page"><Loader/></div>;
+    return <div className={styles.page}><Loader/></div>;
   }
 
   if (error) {
-    return <FetchingError text={error}/>;
+    return <Error text={error}/>;
   }
 
   return (
-      <div className="page">
+      <div className={styles.page}>
         <h2>Главная</h2>
         <div className={styles.container}>
         {lessons.length > 0 ? lessons.map((lesson) => (
           <LessonItem key={lesson._id} lesson={lesson} />
         )) : (
           <div>
-            <WarningIcon/>
             <h5>
               Тут пусто :(
             </h5>

@@ -65,7 +65,7 @@ export const Registration: React.FC<{setPage: Function, login: string}> = ({setP
             onChange={handleChange}
             name={userInputNames.password}
           />
-          <button className={styles.button} type="submit">
+          <button className={styles.submitButton} type="submit">
             Зарегистрироваться
           </button>
           <p 

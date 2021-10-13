@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getLessons } from '../../store/lessons/actions/lessonsActions';
-import { FetchingError } from '../Errors/FetchingError/FetchingError';
-import { LessonItem } from '../Lessons/LessonsItem/LessonItem';
+import { Error } from '../Errors/Error';
+import { LessonItem } from '../LessonsItem/LessonsItem';
 import { Loader } from '../Loading/Loader';
-import styles from '../Lessons/Lessons/styles.module.scss';
+import styles from '../Lessons/styles.module.scss';
 export const History: React.FC = () => {
     const { lessons, loading, error } = useTypedSelector(
         (state) => state.lessons
@@ -20,15 +20,15 @@ export const History: React.FC = () => {
     }, [dispatch, user]);
     
     if (loading) {
-        return <div className="page"><Loader/></div>;
+        return <div className={styles.page}><Loader/></div>;
     }
     
     if (error) {
-        return <FetchingError text={error}/>;
+        return <Error text={error}/>;
     }
       
     return (
-        <div className="page">
+        <div className={styles.page}>
             <h2>История</h2>
             <div className={styles.container}>
         {lessons.length > 0 ? lessons.map((lesson) => (

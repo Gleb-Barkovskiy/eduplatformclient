@@ -1,0 +1,18 @@
+@use "../variables";
+
+@mixin button($width, $height, $color, $borderRadius) {
+    width: $width;
+    height: $height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color;
+    border-radius: $borderRadius;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        color: $yellow;
+        transition: 0.2s;
+    }
+}

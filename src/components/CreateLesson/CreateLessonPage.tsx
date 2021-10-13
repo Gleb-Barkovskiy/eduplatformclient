@@ -52,11 +52,16 @@ export const CreateLessonPage:React.FC = () => {
         setLessonData({ ...lessonData, [e.target.name]: e.target.value });
     };
 
-    if(loading) {
-        return <div className="page">Loading...</div>
+    const clear = () => {
+        setLessonData(initialState);
     };
+
+    if(loading) {
+        return <div className={styles.page}>Loading...</div>
+    };
+
     return (
-        <div className="page">
+        <div className={styles.page}>
           <form className={styles.form} onSubmit={handleSubmit}>
             <h2>Создать новый урок</h2>
             <input
@@ -89,9 +94,14 @@ export const CreateLessonPage:React.FC = () => {
                 onChange={handleChange}
                 name={newLessonFields.tags}
             />
-            <button className={styles.button} type="submit">
+            <div className={styles.buttons}>
+            <button className={styles.submitButton} type="submit">
                 Создать
             </button>
+            <button className={styles.clearButton} onClick={clear}>
+                Очистить
+            </button>
+            </div>
            </form>
         </div>
     );

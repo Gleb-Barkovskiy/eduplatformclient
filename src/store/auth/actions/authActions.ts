@@ -7,6 +7,7 @@ import axios from 'axios';
 
 export const signInUser = (userData: SignInData) => async (dispatch: Dispatch<userSignInAction>) => {
     try {
+        dispatch({type: actionTypes.LOADING_AUTH});
         const {data} = await api.signInUser(userData);
         localStorage.setItem('token', data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
@@ -18,6 +19,7 @@ export const signInUser = (userData: SignInData) => async (dispatch: Dispatch<us
 
 export const signUpUser = (userData: SignUpData) => async (dispatch: Dispatch<userSignUpAction>) => {
     try {
+        dispatch({type: actionTypes.LOADING_AUTH});
         const {data} = await api.signUpUser(userData);
         localStorage.setItem('token', data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
@@ -29,6 +31,7 @@ export const signUpUser = (userData: SignUpData) => async (dispatch: Dispatch<us
 
 export const singOutUser = () => async (dispatch: Dispatch<userSignOutAction>) => {
     try {
+        dispatch({type: actionTypes.LOADING_AUTH});
         await api.signOutUser();
         localStorage.removeItem('token');
         localStorage.removeItem('refreshToken');
@@ -40,8 +43,9 @@ export const singOutUser = () => async (dispatch: Dispatch<userSignOutAction>) =
 
 export const checkAuth = () => async (dispatch: Dispatch<userSignInAction>) => {
     try {
+        dispatch({type: actionTypes.LOADING_AUTH});
         const token = localStorage.getItem('refreshToken');
-        const res = await axios.get(`https://pure-woodland-99054.herokuapp.com/auth/refresh/${token}`, {withCredentials: true});
+        const res = await axios.get(`http://localhost:8080/auth/refresh/${token}`, {withCredentials: true});
         localStorage.setItem('token', res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
         dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: res.data});

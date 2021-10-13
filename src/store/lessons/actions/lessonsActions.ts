@@ -71,10 +71,10 @@ export const deleteLesson = (id: string) => async (dispatch: Dispatch<lessonsAct
     };
 };
 
-export const searchLessons = (tags: string[]) => async (dispatch: Dispatch<lessonsAction>) => {
+export const searchLessons = (tags: Array<string>) => async (dispatch: Dispatch<lessonsAction>) => {
     try {
-        dispatch({type: actionTypes.SEARCH, payload: tags})
+        dispatch({type: actionTypes.SEARCH, payload: tags});
     } catch (e) {
-        console.log(e)
+        dispatch({ type: actionTypes.FETCH_ALL_ERROR, payload: 'Уроки не загружены, проверьте подключение к интернету'});
     }
 }

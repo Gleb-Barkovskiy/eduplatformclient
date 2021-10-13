@@ -10,11 +10,12 @@ enum newLessonFields {
 };
 
 
-export const UpdateLesson: React.FC<{id: string, title: string, description: string, poster: string}> = ({
+export const UpdateLesson: React.FC<{id: string, title: string, description: string, poster: string, setModalOpen: any}> = ({
     id,
     title, 
     description, 
-    poster}
+    poster,
+    setModalOpen}
 ) => {
 
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const UpdateLesson: React.FC<{id: string, title: string, description: str
 
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setModalOpen(false)
         dispatch(updateLesson(id, lessonData));
     };
 
@@ -32,7 +34,7 @@ export const UpdateLesson: React.FC<{id: string, title: string, description: str
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
-            <h3>Изменить</h3>
+            <h2>Изменить</h2>
             <input
                 className={styles.input}
                 placeholder="Название"
@@ -54,9 +56,11 @@ export const UpdateLesson: React.FC<{id: string, title: string, description: str
                 name={newLessonFields.poster}
                 defaultValue={poster}
             />
-            <button className={styles.button} type="submit">
-                Готово
-            </button>
+            <div className={styles.buttons}>
+                <button className={styles.submitButton} type="submit">
+                    Готово
+                </button>
+            </div>
         </form>
     );
 };

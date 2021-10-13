@@ -1,0 +1,73 @@
+@mixin roundedButton {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid lightgray;
+    font-size: 15px;
+    margin: 5px;
+    @media(max-width: 1000px) {
+        width: 300px;
+        height: 300px;
+        font-size: xx-large;
+    }
+    &:hover {
+        color: gold;
+        border: 1px solid gold;
+        transition: 0.3s;
+    }
+    transition: 0.2s;
+}
+
+@mixin form($width) {
+  width: $width;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .input {
+    min-width: 350px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    margin: 20px;
+    font-size: 16px;
+    &:focus {
+      border-bottom: 1px solid gold;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    .submitButton {
+        @include roundedButton;
+      }
+      .clearButton {
+        @include roundedButton;
+        &:hover {
+            color: darkred;
+            border: 1px solid darkred;
+            transition: 0.3s;
+        }
+      }
+  }
+  @media(max-width: 1000px) {
+    width: 800px;
+    h2 {
+        font-size: 50px;
+    }
+    .input {
+        min-width: 100%;
+        font-size: xx-large;
+        margin: 50px;
+    }
+    .buttons {
+        width: 90%;
+        justify-content: space-between;
+    }
+  }
+}

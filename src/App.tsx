@@ -5,7 +5,6 @@ import { Navbar } from './components/Navbar/Navbar';
 import { checkAuth } from './store/auth/actions/authActions';
 import { useDispatch } from 'react-redux';
 import './index.scss';
-import { NavMenu } from './components/Navbar/NavMenu/NavMenu';
 
 
 export const App:React.FC = () => {
@@ -22,7 +21,6 @@ export const App:React.FC = () => {
     <BrowserRouter>
       <div className="app-container">
         <Navbar/>
-        <NavMenu/>
         <ClientRouter/>
       </div>
     </BrowserRouter>

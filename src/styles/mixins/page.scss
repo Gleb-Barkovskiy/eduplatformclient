@@ -1,7 +1,6 @@
-.page {
+@mixin page {
     position: absolute;
     top: 60px;
-    left: 250px;
-    width: calc(100% - 250px);
     height: calc(100% - 60px);
+    width: 100%;
 }

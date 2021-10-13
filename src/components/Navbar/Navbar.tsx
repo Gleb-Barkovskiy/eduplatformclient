@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PersonIcon from '@material-ui/icons/Person';
@@ -9,11 +9,14 @@ import { useDispatch } from 'react-redux';
 import { singOutUser } from '../../store/auth/actions/authActions';
 import styles from './styles.module.scss';
 import { SearchField } from '../Search/SearchField';
+import { NavMenu } from '../NavMenu/NavMenu';
 
 
 export const Navbar: React.FC = () => {
 
     const dispatch = useDispatch();
+
+    const [isMenuOpen, setMenuOpen] = useState(false)
 
     const user = useTypedSelector(state => state.auth.auth?.user);
 
@@ -23,7 +26,10 @@ export const Navbar: React.FC = () => {
 
     return (
         <header className={styles.header}>
-            <h1 className={styles.logo}><LibraryBooksIcon/>eduplatform</h1>
+            {isMenuOpen && <NavMenu setMenuOpen={setMenuOpen}/>}
+            <h1 className={styles.logo} onClick={() => setMenuOpen(true)}>
+                <LibraryBooksIcon/>eduplatform
+            </h1>
             <div className={styles.search}>
                 <SearchField/>
             </div>

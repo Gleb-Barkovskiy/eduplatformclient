@@ -1,16 +1,29 @@
+@import "../../styles/variables";
+@import "../../styles/mixins/buttons.scss";
 .header {
-    z-index: 2;
     position: fixed;
+    box-shadow: 1px 1px 1px lightgray;
     display: grid;
+    z-index: 2;
     height: 60px;
     width: 100%;
-    background-color: antiquewhite;
-    grid-template-columns: minmax(0px, 20px) 300px 1fr minmax(350px, 700px) 1fr minmax(0px, 200px) minmax(2px, 20px) 60px minmax(0px, 20px);
+    background-color: $white;
+    grid-template-columns: 
+    minmax(0px, 20px) 
+    250px 
+    1fr 
+    minmax(350px, 700px) 
+    1fr 
+    minmax(0px, 200px) 
+    minmax(2px, 20px) 
+    60px 
+    minmax(0px, 20px);
     grid-template-rows: 60px;
     align-items: center;
     .logo {
         grid-column: 2;
         user-select: none;
+        cursor: pointer;
     }
     .search {
         grid-column: 4;
@@ -23,17 +36,15 @@
     }
     .log {
         grid-column: 8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background-color: white;
-        &:hover {
-            background-color: lightgray;
-            transition: 0.3s;
-        }
+        @include button(50px, 50px, $white, 50%);
+    }
+}
+@media (max-width: 1000px) {
+    .header {
+        height: 100px;
+        grid-template-rows: 100px;
+    }
+    .username {
+        font-size: x-large;
     }
 }

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { LESSONS_ROUTE } from '../../router/consts';
 import { deleteLesson, getLesson, likeLesson } from '../../store/lessons/actions/lessonsActions';
-import { FetchingError } from '../Errors/FetchingError/FetchingError';
+import { Error } from '../Errors/Error';
 import { UpdateLesson } from '../UpdateLesson/UpdateLesson';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -29,10 +29,10 @@ export const Lesson:React.FC = () => {
     }, [dispatch, lesson, loading, user]);
 
     if (loading) {
-        return <h4>Загрузка...</h4>;
+        return <div className={styles.page}></div>;
     };
     if (error) {
-        return <FetchingError text={error}/>;
+        return <Error text={error}/>;
     };
 
     const deleteThisLesson = () => {
@@ -47,9 +47,8 @@ export const Lesson:React.FC = () => {
     };
 
     return lesson ? (
-        <div className="page">
+        <div className={styles.page}>
             <div className={styles.container}>
-                <h1>{lesson.title}</h1>
                 {lesson.video.indexOf('youtube') ? (
                     <iframe 
                         className={styles.video}
@@ -65,6 +64,7 @@ export const Lesson:React.FC = () => {
                     >
                     </video>
                 )}
+                <h1>{lesson.title}</h1>
                 <article className={styles.description}>
                     {lesson.description}
                 </article>
@@ -80,13 +80,13 @@ export const Lesson:React.FC = () => {
                         </button>
                     )}
                     {user!.id === lesson.authorId && (
-                        <div>
+                        <div className={styles.user}>
                             <NavLink to={LESSONS_ROUTE} onClick={deleteThisLesson}>
                                 <button className={styles.btn}>
                                     <DeleteForeverIcon/>
                                 </button>
                             </NavLink>
-                            <button className={styles.btn} onClick={() => setModalOpen(!isModalOpen)}>
+                            <button className={styles.btn} onClick={() => setModalOpen(true)}>
                                 <SettingsIcon/>
                             </button>
                             {isModalOpen && (<div className={styles.modal}>
@@ -98,6 +98,7 @@ export const Lesson:React.FC = () => {
                             title={lesson.title} 
                             description={lesson.description} 
                             poster={lesson.poster}
+                            setModalOpen={setModalOpen}
                             />
                             </div>)}
                         </div>
@@ -106,7 +107,7 @@ export const Lesson:React.FC = () => {
             </div>
         </div>
     ) : (
-        <div className="page">
+        <div className={styles.page}>
             <h2>Урок не найден</h2>
         </div>
     );

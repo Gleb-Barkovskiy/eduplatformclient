@@ -26,11 +26,13 @@ export interface Auth {
     user: User;
 };
 
-export type userSignInAction = signInSuccessAction | signInErrorAction;
-export type userSignUpAction = signUpSuccessAction | signUpErrorAction;
-export type userSignOutAction = signOutAction;
+export type userSignInAction = signInSuccessAction | signInErrorAction | loadingAction;
+export type userSignUpAction = signUpSuccessAction | signUpErrorAction | loadingAction;
+export type userSignOutAction = signOutAction | loadingAction;
 
-
+interface loadingAction {
+    type: actionTypes.LOADING_AUTH,
+}
 interface signInSuccessAction {
     type: actionTypes.LOGIN_SUCCESS,
     payload: Auth,

@@ -1,0 +1,7 @@
+@import "../../../styles/mixins/links.scss";
+
+.navlinks {
+    .navlink {
+        @include navLink;
+    }
+}
