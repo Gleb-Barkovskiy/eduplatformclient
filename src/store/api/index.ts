@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { SignInData, SignUpData } from './../auth/types/types';
-import { newLessonData, updateLessonData, Filter } from './../lessons/types/types';
+import { SignInData, SignUpData } from '../auth/types/types';
+import { newLessonData, updateLessonData, Filter } from '../lessons/types/types';
 
 const API = axios.create({ withCredentials: true,baseURL: 'https://pure-woodland-99054.herokuapp.com/' });
 

@@ -39,7 +39,7 @@ interface signInSuccessAction {
 };
 interface signInErrorAction {
     type: actionTypes.LOGIN_ERROR,
-    payload: string
+    payload: any
 };
 
 interface signUpSuccessAction {
@@ -48,7 +48,7 @@ interface signUpSuccessAction {
 };
 interface signUpErrorAction {
     type: actionTypes.REGISTRATION_ERROR,
-    payload: string
+    payload: any
 };
 
 interface signOutAction {

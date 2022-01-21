@@ -3,7 +3,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PersonIcon from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
-import { AUTH_ROUTE } from '../../router/consts';
+import { AUTH_ROUTE, PROFILE_ROUTE } from '../../router/consts';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { singOutUser } from '../../store/auth/actions/authActions';
@@ -39,7 +39,10 @@ export const Navbar: React.FC = () => {
             </NavLink>
             ) : (
             <>
-                <h3 className={styles.username}>{user.firstName}</h3>
+                <h3 className={styles.username}>
+                    <NavLink to={PROFILE_ROUTE}>{user.firstName}</NavLink>
+                </h3>
+                
                 <button className={styles.log} onClick={() => {logout()}}>
                     <ExitToAppIcon/>
                 </button>

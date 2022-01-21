@@ -9,4 +9,5 @@
 }
 .form {
     @include form(600px);
+    height: calc(100% - 60px);
 }
