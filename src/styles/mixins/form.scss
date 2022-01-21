@@ -1,3 +1,5 @@
+@use "../variables";
+
 @mixin roundedButton {
     width: 75px;
     height: 75px;
@@ -15,15 +17,24 @@
         font-size: xx-large;
     }
     &:hover {
-        color: gold;
-        border: 1px solid gold;
+        color: #000080;
+        border: 1px solid #000080;
         transition: 0.3s;
     }
     transition: 0.2s;
 }
 
 @mixin form($width) {
+
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+
   width: $width;
+  height: $width;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,12 +43,13 @@
     min-width: 350px;
     outline: none;
     border: none;
+    border-radius: 10px;
     border-bottom: 1px solid gray;
     padding: 20px;
     margin: 20px;
     font-size: 16px;
     &:focus {
-      border-bottom: 1px solid gold;
+      border-bottom: 1px solid #000080;
     }
   }
   .buttons {

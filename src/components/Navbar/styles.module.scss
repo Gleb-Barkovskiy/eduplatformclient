@@ -2,6 +2,7 @@
 @import "../../styles/mixins/buttons.scss";
 .header {
     position: fixed;
+    color: $main;
     box-shadow: 1px 1px 1px lightgray;
     display: grid;
     z-index: 2;

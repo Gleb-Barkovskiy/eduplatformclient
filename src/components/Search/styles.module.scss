@@ -20,10 +20,10 @@
         //border-bottom: 1px solid $label;
         outline: none;
         &:hover {
-            border-bottom: 1px solid $yellow;
+            border-bottom: 1px solid $main;
         }
         &:focus {
-            border-bottom: 2px solid $yellow;
+            border-bottom: 2px solid $main;
         }
     }
     .button {

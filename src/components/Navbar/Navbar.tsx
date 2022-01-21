@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
         <header className={styles.header}>
             {isMenuOpen && <NavMenu setMenuOpen={setMenuOpen}/>}
             <h1 className={styles.logo} onClick={() => setMenuOpen(true)}>
-                <LibraryBooksIcon/>eduplatform
+                <LibraryBooksIcon/>ByTube
             </h1>
             <div className={styles.search}>
                 <SearchField/>

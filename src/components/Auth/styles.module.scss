@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 @import "../../styles/mixins/form.scss";
 @import "../../styles/mixins/page.scss";
 
@@ -16,8 +17,8 @@
         min-width: max-content;
         transition: 0.2s;
         &:hover {
-            border: 1px solid gold;
-            color: gold;
+            border: 1px solid $main;
+            color: $main;
             transition: 0.3s;
         }
     }

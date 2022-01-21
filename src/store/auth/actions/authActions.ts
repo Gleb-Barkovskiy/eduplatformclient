@@ -45,7 +45,7 @@ export const checkAuth = () => async (dispatch: Dispatch<userSignInAction>) => {
     try {
         dispatch({type: actionTypes.LOADING_AUTH});
         const token = localStorage.getItem('refreshToken');
-        const res = await axios.get(`http://localhost:8080/auth/refresh/${token}`, {withCredentials: true});
+        const res = await axios.get(`https://pure-woodland-99054.herokuapp.com/auth/refresh/${token}`, {withCredentials: true});
         localStorage.setItem('token', res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
         dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: res.data});
