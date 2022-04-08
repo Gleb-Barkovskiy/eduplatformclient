@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createLesson } from '../../store/lessons/actions/lessonsActions';
 import { newLessonData } from '../../store/lessons/types/types';
+import { Loader } from '../Loading/Loader';
 import styles from './styles.module.scss';
 
 enum newLessonFields {
@@ -57,7 +58,7 @@ export const CreateLessonPage:React.FC = () => {
     };
 
     if(loading) {
-        return <div className={styles.page}>Loading...</div>
+        return <div className={styles.page}><Loader/></div>
     };
 
     return (

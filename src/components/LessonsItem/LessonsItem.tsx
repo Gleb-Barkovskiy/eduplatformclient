@@ -23,7 +23,10 @@ export const LessonItem:React.FC<{lesson: LessonObject}> = ({lesson}) => {
             <div className={styles.wrapper}>
                 <NavLink to={LESSON_DETAILS_ROUTE} onClick={openLessonDetails}>
                 <div className={styles.poster}>
-                    <img src={lesson.poster} alt="lesson_image"/>
+                    {lesson.poster.startsWith("http") ? 
+                    <img src={lesson.poster} alt="lesson_image"/>  :
+                    <img src="https://images.unsplash.com/photo-1614292253351-4deb4913c142?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="lesson_image"/>
+                    }
                 </div>
                 <div className={styles.info}>
                     <div className={styles.tags}>

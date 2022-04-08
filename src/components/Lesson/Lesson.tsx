@@ -12,6 +12,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import SettingsIcon from '@material-ui/icons/Settings';
 import CloseIcon from '@material-ui/icons/Close';
 import styles from './styles.module.scss';
+import { Loader } from '../Loading/Loader';
 
 export const Lesson:React.FC = () => {
 
@@ -29,7 +30,7 @@ export const Lesson:React.FC = () => {
     }, [dispatch, lesson, loading, user]);
 
     if (loading) {
-        return <div className={styles.page}></div>;
+        return <div className={styles.page}><Loader/></div>;
     };
     if (error) {
         return <Error text={error}/>;
@@ -45,11 +46,10 @@ export const Lesson:React.FC = () => {
        const userId = user!.id;
        dispatch(likeLesson(lessonId, userId));
     };
-
     return lesson ? (
         <div className={styles.page}>
             <div className={styles.container}>
-                {lesson.video.indexOf('youtube') ? (
+                {lesson.video.indexOf('youtube' || 'google') !== -1 ? (
                     <iframe 
                         className={styles.video}
                         title="Video"

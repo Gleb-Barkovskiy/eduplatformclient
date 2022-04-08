@@ -6,6 +6,7 @@ import { Error } from "../Errors/Error";
 import { Loader } from "../Loading/Loader";
 import { LessonItem } from "../LessonsItem/LessonsItem";
 import styles from './styles.module.scss';
+import { SearchField } from "../Search/SearchField";
 
 export const Lessons: React.FC = () => {
 
@@ -29,7 +30,10 @@ export const Lessons: React.FC = () => {
 
   return (
       <div className={styles.page}>
-        <h2>Главная</h2>
+        <h2 onClick={() => {dispatch(getLessons())}}>Главная</h2>
+        <div className={styles.search}>
+            <SearchField/>
+        </div>
         <div className={styles.container}>
         {lessons.length > 0 ? lessons.map((lesson) => (
           <LessonItem key={lesson._id} lesson={lesson} />

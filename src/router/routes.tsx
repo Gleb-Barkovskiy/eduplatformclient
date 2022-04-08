@@ -1,6 +1,6 @@
 import React from 'react';
 // consts
-import { AUTH_ROUTE, CREATE_ROUTE, LESSON_DETAILS_ROUTE, LESSONS_ROUTE, PROFILE_ROUTE, HISTORY_ROUTE, FAVORITES_ROUTE, SEARCH_ROUTE } from './consts';
+import { AUTH_ROUTE, CREATE_ROUTE, LESSON_DETAILS_ROUTE, LESSONS_ROUTE, PROFILE_ROUTE, HISTORY_ROUTE, FAVORITES_ROUTE } from './consts';
 // components
 import {Lessons} from '../components/Lessons/Lessons';
 import {Lesson} from '../components/Lesson/Lesson';
@@ -9,7 +9,6 @@ import {Profile} from '../components/Profile/Profile';
 import {CreateLessonPage} from '../components/CreateLesson/CreateLessonPage';
 import { Favorite } from '../components/Favorite/Favorite';
 import { History } from '../components/History/History';
-import { Search } from '../components/Search/Search';
 
 
 interface RouteType {
@@ -30,10 +29,6 @@ export const publicRoutes:Array<RouteType> = [
     {
         path: AUTH_ROUTE,
         component: Auth
-    },
-    {
-        path: SEARCH_ROUTE,
-        component: Search
     },
 ];
 
@@ -61,9 +56,5 @@ export const privateRoutes:Array<RouteType> = [
     {
         path: CREATE_ROUTE,
         component: CreateLessonPage
-    },
-    {
-        path: SEARCH_ROUTE,
-        component: Search
     },
 ];

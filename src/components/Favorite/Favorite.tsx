@@ -28,7 +28,7 @@ export const Favorite: React.FC = () => {
     if (error) {
         return <Error text={error}/>;
     }
-      
+
     return (
         <div className={styles.page}>
             <h2>Понравилось</h2>

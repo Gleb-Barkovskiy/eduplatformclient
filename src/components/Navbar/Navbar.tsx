@@ -8,7 +8,6 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { singOutUser } from '../../store/auth/actions/authActions';
 import styles from './styles.module.scss';
-import { SearchField } from '../Search/SearchField';
 import { NavMenu } from '../NavMenu/NavMenu';
 
 
@@ -30,9 +29,9 @@ export const Navbar: React.FC = () => {
             <h1 className={styles.logo} onClick={() => setMenuOpen(true)}>
                 <LibraryBooksIcon/>ByTube
             </h1>
-            <div className={styles.search}>
+            {/*<div className={styles.search}>
                 <SearchField/>
-            </div>
+            </div>*/}
             {!user ? ( 
             <NavLink className={styles.log} to={AUTH_ROUTE}>
                 <PersonIcon/>

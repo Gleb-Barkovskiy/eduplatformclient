@@ -2,7 +2,9 @@ import axios from 'axios';
 import { SignInData, SignUpData } from '../auth/types/types';
 import { newLessonData, updateLessonData, Filter } from '../lessons/types/types';
 
-const API = axios.create({ withCredentials: true,baseURL: 'https://pure-woodland-99054.herokuapp.com/' });
+//https://pure-woodland-99054.herokuapp.com/
+//http://localhost:8080/
+const API = axios.create({ withCredentials: true,baseURL: 'http://localhost:8080/' });
 
 API.interceptors.request.use(config => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
@@ -16,7 +18,7 @@ API.interceptors.response.use(config => {
     if(error.response.status === 401 && error.config && !error.config._isRetry){
         try {
             const token = localStorage.getItem('refreshToken');
-            const res = await axios.get(`https://pure-woodland-99054.herokuapp.com/auth/refresh/${token}`, { withCredentials: true});
+            const res = await axios.get(`http://localhost:8080/auth/refresh/${token}`, { withCredentials: true});
             localStorage.setItem('token', res.data.accessToken);
             localStorage.setItem('refreshToken', res.data.refreshToken);
             return API.request(originalReq);

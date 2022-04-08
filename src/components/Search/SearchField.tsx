@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import styles from './styles.module.scss';
 import { useDispatch } from 'react-redux';
-import { searchLessons } from '../../store/lessons/actions/lessonsActions';
-import { NavLink } from 'react-router-dom';
-import { SEARCH_ROUTE } from '../../router/consts';
+import { getLessons } from '../../store/lessons/actions/lessonsActions';
 
 export const SearchField: React.FC = () => {
 
@@ -18,8 +16,11 @@ export const SearchField: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const tags = text.split(' ');
-        dispatch(searchLessons(tags));
+        if (text.length) {
+            dispatch(getLessons({field: "tags", value: text}));
+        } else {
+            dispatch(getLessons());
+        };
     };
 
     return (
@@ -29,11 +30,9 @@ export const SearchField: React.FC = () => {
                 placeholder="Поиск"
                 onChange={handleChange}
             />
-            <NavLink to={SEARCH_ROUTE}>
             <button className={styles.button} type="submit">
                 <SearchIcon/>
             </button>
-            </NavLink>
         </form>
     );
 };

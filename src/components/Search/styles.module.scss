@@ -23,12 +23,15 @@
             border-bottom: 1px solid $main;
         }
         &:focus {
-            border-bottom: 2px solid $main;
+            border-bottom: 1px solid $main;
         }
+        z-index: 1;
     }
     .button {
         margin-left: -35px;
         @include button(20px, 30px, white, none);
+        z-index: 2;
+        background: none;
     }
 }
 
